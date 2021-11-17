@@ -3,8 +3,10 @@ package _mock
 import (
 	"crypto/rand"
 	"encoding/binary"
+	"github.com/gozelle/decimal"
 	"math"
 	"math/big"
+	mathRand "math/rand"
 	"strconv"
 )
 
@@ -196,3 +198,17 @@ func Uint64Range(min, max uint64) uint64 {
 	_, _ = rand.Read(buf)
 	return binary.LittleEndian.Uint64(buf)
 }
+
+func Float32() float32 {
+	return mathRand.Float32()
+}
+
+func Float64() float64 {
+	return mathRand.Float64()
+}
+
+func Decimal() decimal.Decimal {
+	return decimal.NewFromFloat(Float64())
+}
+
+
